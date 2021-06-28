@@ -1,8 +1,6 @@
 require "svg_inliner/version"
 require "svg_inliner/configuration"
 
-ActiveSupport.on_load( :action_view ){ include SvgInliner }
-
 module SvgInliner
   class Engine < ::Rails::Engine
   end

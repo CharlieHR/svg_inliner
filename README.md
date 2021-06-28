@@ -10,6 +10,24 @@ gem 'svg_inliner'
 ```
 Add line above to gemfile and execute: $ bundle
 
+You'll need to add an initializer in your Rails app that includes the helper and
+configures it:
+
+#### **config/initializers/svg_inliner.rb**
+```ruby
+Rails.application.reloader.to_prepare do
+  ::ActionView::Base.include(SvgInliner)
+end
+
+SvgInliner.configure do |config|
+  # config.css_class = 'o-icon'
+  # config.path = "/lib/assets/images/"
+  # config.file = "iconset.svg"
+  # config.inline = false
+  # config.role = 'img'
+  # config.aria = true
+end
+```
 
 ### Creating the SVG sprite
 Setup the initial SVG sprite for your project. The inliner looks for symbols with id's, and appends the viewbox and the content of the symbol to a new svg content_tag in your view.
