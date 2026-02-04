@@ -85,7 +85,7 @@ module SvgInliner
           role: options[:role]
         }
       else
-        puts "Missing <title> in symbol. svg_inliner didn't add aria label to svg."
+        Rails.logger.warn "Missing <title> in symbol. svg_inliner didn't add aria label to svg."
       end
     end
 
